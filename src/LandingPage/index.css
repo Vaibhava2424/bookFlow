@@ -1,0 +1,94 @@
+.landing-page-container {
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.landing-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 2rem;
+  margin-top: 2rem;
+  background-color: #1A1A1D; /* Secondary Background */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.landing-text {
+  flex: 1;
+  text-align: left;
+}
+
+.landing-title {
+  color: #FFFFFF; /* Text Primary */
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.landing-description {
+  color: #C0C0C0; /* Text Secondary */
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.landing-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-button {
+  background-color: #6A0DAD; /* Primary Accent */
+  color: #FFFFFF;
+}
+
+.signup-button:hover {
+  background-color: #9B30FF; /* Hover/Active Purple */
+}
+
+.signin-button {
+  background-color: transparent;
+  color: #6A0DAD; /* Primary Accent */
+  border: 2px solid #6A0DAD;
+}
+
+.signin-button:hover {
+  background-color: #6A0DAD;
+  color: #FFFFFF;
+}
+
+.landing-image-container {
+  flex: 1;
+  text-align: center;
+}
+
+.landing-image {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .landing-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  .landing-buttons {
+    justify-content: center;
+  }
+}

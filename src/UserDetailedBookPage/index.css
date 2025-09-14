@@ -1,0 +1,157 @@
+.user-book-details-page {
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.details-container {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  background-color: #1A1A1D;
+  border: 1px solid #2E2E2E;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+}
+
+.image-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.book-cover-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #2E2E2E;
+}
+
+.back-button {
+  background-color: #6A0DAD;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #9B30FF;
+}
+
+.details-column {
+  flex: 2;
+  color: #C0C0C0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.book-title {
+  color: #FFFFFF;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.book-detail {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.button-group {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button {
+  background-color: #6A0DAD;
+  color: #FFFFFF;
+}
+
+.edit-button:hover {
+  background-color: #9B30FF;
+}
+
+.delete-button {
+  background-color: #FF4C4C;
+  color: #FFFFFF;
+}
+
+.delete-button:hover {
+  background-color: #FF1C1C;
+}
+
+.save-button {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+}
+
+.save-button:hover {
+  background-color: #45A049;
+}
+
+.cancel-button {
+  background-color: #555555;
+  color: #FFFFFF;
+}
+
+.cancel-button:hover {
+  background-color: #777777;
+}
+
+.edit-input,
+.edit-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #2E2E2E;
+  background-color: #2C2C2C;
+  color: #FFFFFF;
+  font-size: 1rem;
+}
+
+.edit-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.loading-message,
+.error-message,
+.not-found-message {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 5rem;
+  color: #C0C0C0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .details-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

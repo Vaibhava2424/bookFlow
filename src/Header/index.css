@@ -1,0 +1,68 @@
+.navbar {
+  background-color: #1A1A1D; /* Secondary Background */
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  color: #FFFFFF; /* Text Primary */
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.highlight {
+  color: #6A0DAD; /* Primary Accent */
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #C0C0C0; /* Text Secondary */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.add-button {
+  background: #6A0DAD; /* Primary Accent */
+  border: none;
+  color: #FFFFFF; /* Text Primary */
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.logout-button {
+  padding: 8px 14px;
+  border: 2px solid #9b5de5; /* purplish border */
+  border-radius: 6px;
+  background-color: #1a1a1f; /* blackish background */
+  color: #9b5de5; /* purplish text */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #2e2b38; /* slightly lighter black/purple */
+  color: #c084fc; /* lighter purple on hover */
+  border-color: #c084fc; /* lighter purple border on hover */
+}
+

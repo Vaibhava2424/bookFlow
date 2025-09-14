@@ -1,0 +1,85 @@
+/* --- Main Page Container --- */
+.book-details-page {
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.details-container {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  background-color: #1A1A1D; /* Secondary Background */
+  border: 1px solid #2E2E2E;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+}
+
+/* --- Left Side: Book Cover Image --- */
+.image-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.book-cover-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #2E2E2E;
+}
+
+.back-button {
+  background-color: #6A0DAD;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #9B30FF;
+}
+
+/* --- Right Side: Details --- */
+.details-column {
+  flex: 2;
+  color: #C0C0C0;
+}
+
+.book-title {
+  color: #FFFFFF;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.book-detail {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.loading-message, .error-message, .not-found-message {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 5rem;
+  color: #C0C0C0;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .details-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

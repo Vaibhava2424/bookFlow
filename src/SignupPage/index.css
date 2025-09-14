@@ -1,0 +1,99 @@
+/* --- Background Image and Container --- */
+.auth-background {
+  background-image: url('https://res.cloudinary.com/dodfv5sbg/image/upload/v1757497008/02d7eb1b-4223-4e13-a6f9-a6ec7eb9ac0f_poiqg3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* --- Form Styles (Transparent Card) --- */
+.auth-form {
+  background-color: rgba(13, 13, 13, 0.5); /* Lighter, more transparent background */
+  backdrop-filter: blur(5px);
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(46, 46, 46, 0.5);
+}
+
+.auth-title {
+  color: #FFFFFF; /* Text Primary */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.form-message {
+  color: #00C896; /* Success Green */
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: rgba(13, 13, 13, 0.7); /* Semi-transparent Main Background */
+  border: 1px solid rgba(46, 46, 46, 0.7); /* Semi-transparent Borders/Dividers */
+  color: #FFFFFF;
+  border-radius: 4px;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #C0C0C0; /* Lighter placeholder text */
+}
+
+.form-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #6A0DAD; /* Primary Accent */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover:not(:disabled) {
+  background-color: #9B30FF;
+}
+
+.form-button:disabled {
+  background-color: #2E2E2E;
+  cursor: not-allowed;
+}
+
+.auth-switch {
+  font-size: 0.9rem;
+  color: #C0C0C0;
+  margin-top: 1.5rem;
+}
+
+.switch-link {
+  color: #6A0DAD;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.switch-link:hover {
+  color: #9B30FF;
+}

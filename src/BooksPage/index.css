@@ -1,0 +1,230 @@
+/* --- Main Page Container --- */
+.books-section-main {
+  display: flex;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.sidebar-column {
+  flex-basis: 300px;
+  flex-shrink: 0;
+  background-color: #1A1A1D; /* Secondary Background */
+  padding: 1.5rem;
+  border-radius: 8px;
+  color: #C0C0C0; /* Text Secondary */
+  height: fit-content;
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #6A0DAD; /* Primary Accent */
+  color: #FFFFFF;
+  border-radius: 50%;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 80px;
+  margin: 0 auto 1rem;
+}
+
+.profile-name {
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.profile-bio {
+  font-size: 0.9rem;
+  color: #C0C0C0;
+}
+
+.filter-divider {
+  border: none;
+  border-top: 1px solid #2E2E2E; /* Borders/Dividers */
+  margin: 1.5rem 0;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-title {
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.filters-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.books-list-column {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* adds space between books grid and pagination */
+}
+
+.search-bar-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #1A1A1D;
+  color: #FFFFFF;
+  border: 1px solid #2E2E2E;
+  border-radius: 8px;
+  outline: none;
+}
+
+.books-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.book-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- 3D Flipping Card Styles --- */
+.book-card-container {
+  background-color: transparent;
+  width: 100%;
+  perspective: 1000px; /* 3D effect */
+  cursor: pointer;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.book-card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  text-align: center;
+  transition: transform 0.8s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Flip + move right + lift + shadow on hover */
+.book-card-container:hover .book-card-inner {
+  transform: rotateY(180deg) translateX(10px) translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* bigger shadow */
+}
+
+.book-card-front, .book-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 280px;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #1A1A1D;
+  border: 1px solid #2E2E2E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  text-align: center;
+  backface-visibility: hidden;
+  transition: background-color 0.3s;
+}
+
+.book-card-back {
+  transform: rotateY(180deg);
+  color: #C0C0C0;
+}
+
+/* Book image */
+.book-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* Back card content spacing */
+.book-card-back .book-card-title,
+.book-card-back .book-card-author,
+.book-card-back .book-card-genre,
+.book-card-back .book-card-description {
+  margin: 0.25rem 0;
+}
+
+
+.book-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* --- Pagination Styles --- */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem; /* increased from 2rem to 4rem for bigger gap */
+}
+
+.pagination-button {
+  background-color: #6A0DAD;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #9B30FF;
+}
+
+.pagination-button:disabled {
+  background-color: #2E2E2E;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  color: #C0C0C0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .books-section-main {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+  .sidebar-column {
+    margin-bottom: 2rem;
+  }
+  .books-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .book-card-container {
+    max-width: 150px;
+    height: 225px;
+  }
+  /* Add extra gap for pagination on small screens */
+  .pagination-container {
+    margin-top: 6rem; /* more space so pagination doesn't overlap cards */
+  }
+}
