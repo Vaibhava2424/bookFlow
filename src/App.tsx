@@ -5,7 +5,7 @@ import Home from "./Home";
 import BooksPage from "./BooksPage";
 import AddBookPage from "./AddBookPage";
 import DetailedBook from "./DetailedBookPage";
-import UserBookDetailsPage from "./UserDetailedBookPage";
+import UserBookDetailsPage from './UserDetailedBookPage/index.tsx';
 import About from "./AboutPage";
 import LandingPage from "./LandingPage";
 import Signup from "./SignupPage";
