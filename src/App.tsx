@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import Home from "./Home";
 import BooksPage from "./BooksPage";
@@ -15,22 +15,23 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Root path: Home is protected */}
+        {/* Default root redirects to LandingPage */}
+        <Route path="/" element={<Navigate to="/LandingPage" replace />} />
+
+        {/* Public routes */}
+        <Route path="/LandingPage" element={<LandingPage />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+
+        {/* Protected routes */}
         <Route
-          path="/"
+          path="/home"
           element={
             <ProtectedRoute>
               <Home />
             </ProtectedRoute>
           }
         />
-
-        {/* Public routes without PublicRoute */}
-        <Route path="/LandingPage" element={<LandingPage />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-
-        {/* Protected routes */}
         <Route
           path="/BooksPage"
           element={

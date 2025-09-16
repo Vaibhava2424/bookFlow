@@ -1,11 +1,12 @@
 .add-book-page {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center; /* vertical center */
   gap: 40px;
   padding: 40px;
-  min-height: 80vh;
-  flex-wrap: wrap; /* allows wrapping on small screens */
+  min-height: 100vh; /* center on page */
+  flex-wrap: wrap; /* stack on small screens */
+  box-sizing: border-box;
 }
 
 .add-book-form {
@@ -23,13 +24,14 @@
 
 .form-input,
 .form-textarea {
-  padding: 10px;
+  width: 100%; /* take full form width */
+  padding: 12px;
   border-radius: 6px;
   border: 1px solid #333;
   background-color: #23272f;
   color: #fff;
   font-size: 1rem;
-  width: 100%;
+  box-sizing: border-box; /* no overflow */
 }
 
 .form-textarea {
@@ -38,6 +40,7 @@
 }
 
 .form-button {
+  width: 100%; /* match input width */
   padding: 12px;
   background-color: #5865f2;
   color: #fff;
@@ -58,25 +61,22 @@
   max-width: 400px;
   border-radius: 12px;
   object-fit: cover;
+  display: block;
+  margin: 0 auto; /* center image */
 }
 
 /* --- Responsive Breakpoints --- */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .add-book-page {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 20px;
     padding: 20px;
   }
-}
-
-@media (max-width: 768px) {
-  .add-book-page {
-    flex-direction: column; /* stack image and form */
-    align-items: center;
-    text-align: center;
-  }
 
   .add-book-form {
-    width: 90%; /* take more space on smaller screens */
+    width: 90%;
     max-width: 500px;
   }
 
@@ -95,7 +95,7 @@
   .form-textarea,
   .form-button {
     font-size: 0.9rem;
-    padding: 8px;
+    padding: 10px;
   }
 
   .add-book-image img {
