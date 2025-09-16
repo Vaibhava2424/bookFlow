@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./Home";
 import BooksPage from "./BooksPage";
@@ -12,57 +12,24 @@ import Signup from "./SignupPage";
 import Signin from "./SigninPage";
 import ProtectedRoute from "./ProtectedRoute";
 
-// PublicRoute wrapper to prevent logged-in users from accessing public pages
-const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const token = localStorage.getItem("token");
-  return token ? <Navigate to="/" replace /> : <>{children}</>;
-};
-
 function App() {
-  const token = localStorage.getItem("token");
-
   return (
     <BrowserRouter>
       <Routes>
-        {/* Root path: redirect to Home if logged in, else LandingPage */}
+        {/* Root path: Home is protected */}
         <Route
           path="/"
           element={
-            token ? (
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            ) : (
-              <Navigate to="/LandingPage" replace />
-            )
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
           }
         />
 
-        {/* Public routes */}
-        <Route
-          path="/LandingPage"
-          element={
-            <PublicRoute>
-              <LandingPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/signin"
-          element={
-            <PublicRoute>
-              <Signin />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <PublicRoute>
-              <Signup />
-            </PublicRoute>
-          }
-        />
+        {/* Public routes without PublicRoute */}
+        <Route path="/LandingPage" element={<LandingPage />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
 
         {/* Protected routes */}
         <Route
@@ -106,7 +73,7 @@ function App() {
           }
         />
 
-        {/* Fallback for unknown routes */}
+        {/* Fallback */}
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </BrowserRouter>

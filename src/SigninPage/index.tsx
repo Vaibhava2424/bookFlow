@@ -48,7 +48,7 @@ const Signin: React.FC = () => {
       setMessage('Signed in successfully!');
 
       // Navigate to home page
-      setTimeout(() => navigate('/'), 1500);
+      setTimeout(() => navigate('/'), 0);
     } catch (err) {
       const error = err as AxiosError<{ message?: string }>;
       const errorMessage =

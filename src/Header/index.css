@@ -1,5 +1,6 @@
+/* --- Global Navbar Styles --- */
 .navbar {
-  background-color: #1A1A1D; /* Secondary Background */
+  background-color: #1A1A1D;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -13,56 +14,138 @@
 }
 
 .brand {
-  color: #FFFFFF; /* Text Primary */
+  color: #FFFFFF;
   font-size: 1.5rem;
-  /* font-weight: bold; */
   cursor: pointer;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .highlight {
-  color: #6A0DAD; /* Primary Accent */
+  color: #6A0DAD;
 }
 
+/* --- Desktop Navigation Links --- */
 .links {
   display: flex;
   gap: 1.5rem;
+  align-items: center;
 }
 
 .link-button {
   background: none;
   border: none;
-  color: #C0C0C0; /* Text Secondary */
+  color: #C0C0C0;
   font-size: 1rem;
   cursor: pointer;
   transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.link-button:hover {
+  color: #fff;
+}
+
+.link-button.active {
+  color: #6A0DAD; /* Active highlight */
+  font-weight: bold;
 }
 
 .add-button {
-  background: #6A0DAD; /* Primary Accent */
+  background: #6A0DAD;
   border: none;
-  color: #FFFFFF; /* Text Primary */
+  color: #FFFFFF;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
+
+.add-button:hover {
+  background-color: #9B30FF;
+}
+
+.add-button.active {
+  background-color: #9B30FF;
+}
+
 .logout-button {
   padding: 8px 14px;
-  border: 2px solid #9b5de5; /* purplish border */
+  border: 2px solid #9b5de5;
   border-radius: 6px;
-  background-color: #1a1a1f; /* blackish background */
-  color: #9b5de5; /* purplish text */
+  background-color: transparent;
+  color: #9b5de5;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .logout-button:hover {
-  background-color: #2e2b38; /* slightly lighter black/purple */
-  color: #c084fc; /* lighter purple on hover */
-  border-color: #c084fc; /* lighter purple border on hover */
+  background-color: rgba(155, 93, 229, 0.2);
+  color: #c084fc;
+  border-color: #c084fc;
 }
 
+/* --- Mobile Hamburger Menu --- */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  z-index: 1000;
+  padding: 0;
+}
+
+.hamburger-menu div {
+  width: 2rem;
+  height: 0.25rem;
+  background: #FFFFFF;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+}
+
+/* Side Menu (Mobile) */
+.links-mobile {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 4rem;
+  right: 1rem;
+  background-color: #1A1A1D;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transform: translateX(150%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  width: max-content; /* Only take the space needed */
+  min-width: 180px;
+}
+
+.links-mobile.open {
+  transform: translateX(0);
+}
+
+.links-mobile .link-button,
+.links-mobile .add-button,
+.links-mobile .logout-button {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+  .hamburger-menu {
+    display: flex;
+  }
+}

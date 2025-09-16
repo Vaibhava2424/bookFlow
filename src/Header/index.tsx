@@ -1,60 +1,94 @@
-import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import './index.css'; // Import the CSS file
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import "./index.css";
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Get the current URL path
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    // Clear localStorage
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    // Redirect to landing page
-    navigate('/LandingPage');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/LandingPage");
+    setMenuOpen(false);
   };
+
+  const handleLinkClick = (path: string) => {
+    navigate(path);
+    setMenuOpen(false);
+  };
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Brand Name */}
-        <div 
-          className="brand" 
-          onClick={() => navigate('/')}
-        >
+        {/* Brand */}
+        <div className="brand" onClick={() => handleLinkClick("/")}>
           Book<span className="highlight">Flow</span>
         </div>
-        
-        {/* Navigation Links */}
+
+        {/* Hamburger */}
+        <button
+          className={`hamburger-menu ${menuOpen ? "open" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <div />
+          <div />
+          <div />
+        </button>
+
+        {/* Desktop Links */}
         <div className="links">
-          <button 
-            className="link-button" 
-            onClick={() => navigate('/')}
+          <button
+            className={`link-button ${isActive("/") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/")}
           >
             Home
           </button>
-          <button 
-            className='link-button' 
-            onClick={() => navigate('/about')}
+          <button
+            className={`link-button ${isActive("/about") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/about")}
           >
             About
           </button>
-          
-          {/* Only show "Add Book" if not on /add-Book page */}
-          {location.pathname !== '/add-Book' && (
-            <button 
-              className="add-button" 
-              onClick={() => navigate('/add-Book')}
+          {location.pathname !== "/add-book" && (
+            <button
+              className={`add-button ${isActive("/add-book") ? "active" : ""}`}
+              onClick={() => handleLinkClick("/add-book")}
             >
               Add Book
             </button>
           )}
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
 
-          {/* Logout button */}
-          <button 
-            className="logout-button" 
-            onClick={handleLogout}
+        {/* Mobile Menu (Slide-in small panel) */}
+        <div className={`links-mobile ${menuOpen ? "open" : ""}`}>
+          <button
+            className={`link-button ${isActive("/") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/")}
           >
+            Home
+          </button>
+          <button
+            className={`link-button ${isActive("/about") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/about")}
+          >
+            About
+          </button>
+          {location.pathname !== "/add-book" && (
+            <button
+              className={`add-button ${isActive("/add-book") ? "active" : ""}`}
+              onClick={() => handleLinkClick("/add-book")}
+            >
+              Add Book
+            </button>
+          )}
+          <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
         </div>

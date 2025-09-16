@@ -55,7 +55,7 @@ const AddBookForm: React.FC<AddBookFormProps> = ({ onBookAdded }) => {
         },
       });
 
-      setMessage("Book added to your collection successfully! , you can check it in Books section and edit it there by clicking on the book");
+      setMessage("Book added to your collection successfully! , you can check it in Books section and edit it there by");
       setFormData({
         title: "",
         author: "",
