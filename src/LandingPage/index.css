@@ -82,13 +82,68 @@
   border-radius: 8px;
 }
 
+/* 📱 Mobile (Glassmorphic overlay) */
 @media (max-width: 768px) {
+  .landing-page-container {
+    padding: 0;
+  }
+
   .landing-content {
     flex-direction: column;
-    text-align: center;
-    gap: 2rem;
+    margin: 0;
+    min-height: 100vh;
+
+    /* Background image */
+    background: url("https://res.cloudinary.com/dodfv5sbg/image/upload/v1757497310/6822722_hooizf.jpg") 
+                no-repeat center center/cover;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+
+    /* Center card vertically & horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
+  /* Glassmorphic card (darker transparency) */
+  .landing-text {
+    background: rgba(13, 13, 13, 0.75); /* darker, less transparent */
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1rem;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7);
+
+    /* Center content inside card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    min-height: 60vh;
+  }
+
+  .landing-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .landing-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
   .landing-buttons {
     justify-content: center;
+    width: 100%;
+  }
+
+  .landing-image-container {
+    display: none; /* hide separate image */
   }
 }
