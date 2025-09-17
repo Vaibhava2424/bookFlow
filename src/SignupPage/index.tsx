@@ -48,6 +48,7 @@ const Signup: React.FC = () => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.result));
 
+
         // Show success message briefly
         setMessage('Signup successful! Redirecting...');
         setTimeout(() => navigate('/home'), 0);

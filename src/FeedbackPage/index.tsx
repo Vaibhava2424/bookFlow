@@ -33,8 +33,20 @@ const Feedback: React.FC = () => {
     setErrorMsg('');
     setSuccessMsg('');
 
-    const username = localStorage.getItem('loggedInUser') || 'Anonymous';
-    const email = localStorage.getItem('loggedInUserEmail') || '';
+    // ✅ Parse user data from localStorage (same key: "user")
+    const storedUser = localStorage.getItem('user');
+    let username = 'Anonymous';
+    let email = '';
+
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        username = parsedUser.username || 'Anonymous';
+        email = parsedUser.email || '';
+      } catch {
+        console.warn('Invalid user data in localStorage');
+      }
+    }
 
     try {
       const response = await fetch('https://bookflow-apis.onrender.com/api/feedback', {
@@ -42,7 +54,6 @@ const Feedback: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, message: feedback }),
       });
-
 
       let data: FeedbackResponse;
       try {
@@ -72,7 +83,6 @@ const Feedback: React.FC = () => {
     <>
       <Header />
       <div className="feedback-container">
-        {/* Left Side Image */}
         <div className="feedback-card">
           <img
             src="https://res.cloudinary.com/dodfv5sbg/image/upload/v1758100146/people-using-appointment-business-application_i47wai.png"
@@ -87,7 +97,6 @@ const Feedback: React.FC = () => {
           />
         </div>
 
-        {/* Feedback Form */}
         <div className="feedback-form-container">
           <form className="feedback-form" onSubmit={handleSubmit}>
             <h2>Submit Your Feedback</h2>
