@@ -10,10 +10,11 @@ import LandingPage from "./LandingPage";
 import Signup from "./SignupPage";
 import Signin from "./SigninPage";
 import ProtectedRoute from "./ProtectedRoute";
-
+import ScrollToTop from "../ScrollTop";
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Root path: Landing page is public */}
         <Route path="/" element={<LandingPage />} />
