@@ -12,7 +12,7 @@ const LandingPage: React.FC = () => {
           <div className="landing-text">
             <h1 className="landing-title">Book<span className="highlight">Flow</span></h1>
             <p className="landing-description">
-              Your personal library, simplified. Manage your books, discover new authors, and organize your reading journey all in one place.
+              Your personal library, simplified. Manage your books, discover new authors, and organize your reading journey all in one place.(Only the details of the books are shown here. To add, edit or delete books).
             </p>
             <div className="landing-buttons">
               <button 
