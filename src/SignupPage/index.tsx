@@ -38,7 +38,7 @@ const Signup: React.FC = () => {
     try {
       // --- Use the interface here ---
       const response = await axios.post<SignupResponse>(
-        'http://localhost:5000/api/v1/signup',
+        'https://bookflow-apis.onrender.com/api/v1/signup',
         formData
       );
       const data = response.data;
@@ -50,7 +50,7 @@ const Signup: React.FC = () => {
 
         // Show success message briefly
         setMessage('Signup successful! Redirecting...');
-        setTimeout(() => navigate('/'), 0);
+        setTimeout(() => navigate('/home'), 0);
       } else {
         setMessage(data.message || 'Signup failed.');
       }

@@ -16,6 +16,12 @@ interface IBook {
   publishedDate: string;
 }
 
+interface IUser {
+  _id?: string;
+  username?: string;
+  email?: string;
+}
+
 const BooksPage: React.FC = () => {
   const [booksList, setBooksList] = useState<IBook[]>([]);
   const [userBooksList, setUserBooksList] = useState<IBook[]>([]); // User added books
@@ -29,9 +35,9 @@ const BooksPage: React.FC = () => {
   const booksPerPage = 10;
   const navigate = useNavigate();
 
-  // ✅ Parse user only once, safely
+  // ✅ Load user safely from localStorage
   const storedUser = localStorage.getItem("user");
-  let user: { name?: string; email?: string } = {};
+  let user: IUser = {};
   try {
     user = storedUser ? JSON.parse(storedUser) : {};
   } catch {
@@ -42,7 +48,7 @@ const BooksPage: React.FC = () => {
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const response = await axios.get<IBook[]>('http://localhost:5000/api/books');
+        const response = await axios.get<IBook[]>('https://bookflow-apis.onrender.com/api/books');
         if (Array.isArray(response.data)) {
           setBooksList(response.data);
           const genres = [...new Set(response.data.map(book => book.genre))];
@@ -68,7 +74,7 @@ const BooksPage: React.FC = () => {
         }
 
         const response = await axios.get<IBook[]>(
-          'http://localhost:5000/api/user-books',
+          'https://bookflow-apis.onrender.com/api/user-books',
           {
             headers: {
               Authorization: `Bearer ${token}`, // ✅ send token in headers
@@ -105,14 +111,16 @@ const BooksPage: React.FC = () => {
   const renderBooksList = () => (
     <div className="books-section-main">
       <div className="sidebar-column">
-        {/* Profile Card */}
+        {/* ✅ Profile Card (fixed username/email) */}
         <div className="profile-card">
           <div className="profile-avatar">
-            {user.name?.charAt(0) || user.email?.charAt(0) || "U"}
+            {user.username?.charAt(0).toUpperCase() ||
+              user.email?.charAt(0).toUpperCase() ||
+              "U"}
           </div>
-          <h2 className="profile-name">{user.name || "User"}</h2>
-          <p className="profile-email">{user.email || "user@example.com"}</p>
-          <p className="profile-bio">Book lover and expert manager</p>
+          <h2 className="profile-name">{user.username || "Guest User"}</h2>
+          <p className="profile-email">{user.email || "No email available"}</p>
+          <p className="profile-bio">📚 Book lover and expert manager</p>
         </div>
 
         <hr className="filter-divider" />
@@ -219,31 +227,6 @@ const BooksPage: React.FC = () => {
           )}
         </ul>
 
-        {/* User Added Books Section */}
-        {userBooksList.length > 0 && (
-          <div className="user-books-section">
-            <h2>User Added Books</h2>
-            <ul className="books-list">
-              {userBooksList.map((book) => (
-                <li key={book._id}>
-                  <Link to={`/user-books/${book._id}`} className="book-card-container">
-                    <div className="book-card-inner">
-                      <div className="book-card-front">
-                        <img src={book.image} alt={book.title} className="book-image" />
-                      </div>
-                      <div className="book-card-back">
-                        <h3 className="book-card-title">{book.title}</h3>
-                        <p className="book-card-author">Author: {book.author}</p>
-                        <p className="book-card-genre">Genre: {book.genre}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
         {/* Pagination Controls */}
         {totalPages > 1 && (
           <div className="pagination-container">
@@ -266,12 +249,39 @@ const BooksPage: React.FC = () => {
             </button>
           </div>
         )}
+
+        {/* User Added Books Section */}
+        {userBooksList.length > 0 && (
+          <div className="user-books-section">
+            <h2 className="user-books-title">User Added Books</h2>
+            <ul className="books-list">
+              {userBooksList.map((book) => (
+                <li key={book._id}>
+                  <Link to={`/user-books/${book._id}`} className="book-card-container">
+                    <div className="book-card-inner">
+                      <div className="book-card-front">
+                        <img src={book.image} alt={book.title} className="book-image" />
+                      </div>
+                      <div className="book-card-back">
+                        <h3 className="book-card-title">{book.title}</h3>
+                        <p className="book-card-author">Author: {book.author}</p>
+                        <p className="book-card-genre">Genre: {book.genre}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        
       </div>
     </div>
   );
 
   return isLoading ? (
-    <div className="loading-container">Loading...</div>
+    <div className="loading-container">Loading Books...</div>
   ) : (
     <>
       <Header />

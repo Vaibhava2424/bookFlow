@@ -149,7 +149,7 @@
 
 .book-card-back {
   transform: rotateY(180deg);
-  color: #C0C0C0;
+  color: #9B30FF;
 }
 
 /* Book image */
@@ -227,4 +227,20 @@
   .pagination-container {
     margin-top: 6rem; /* more space so pagination doesn't overlap cards */
   }
+}
+.loading-container {
+  display: flex;
+  color: #9B30FF;
+  font-size: 1.3rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;   /* Full viewport height */
+  width: 100vw;    /* Full viewport width */
+}
+
+.user-books-title{
+  color: #6A0DAD; 
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
 }

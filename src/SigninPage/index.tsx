@@ -39,7 +39,7 @@ const Signin: React.FC = () => {
       };
 
       const response = await axios.post<SigninResponse>(
-        'http://localhost:5000/api/v1/signin',
+        'https://bookflow-apis.onrender.com/api/v1/signin',
         trimmedData
       );
 
@@ -48,7 +48,7 @@ const Signin: React.FC = () => {
       setMessage('Signed in successfully!');
 
       // Navigate to home page
-      setTimeout(() => navigate('/'), 0);
+      setTimeout(() => navigate('/home'), 0);
     } catch (err) {
       const error = err as AxiosError<{ message?: string }>;
       const errorMessage =

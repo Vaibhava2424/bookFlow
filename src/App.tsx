@@ -15,11 +15,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Default root redirects to LandingPage */}
-        <Route path="/" element={<Navigate to="/LandingPage" replace />} />
+        {/* Root path: Landing page is public */}
+        <Route path="/" element={<LandingPage />} />
 
-        {/* Public routes */}
-        <Route path="/LandingPage" element={<LandingPage />} />
+        {/* Auth routes */}
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
 
@@ -73,8 +72,8 @@ function App() {
           }
         />
 
-        {/* Fallback */}
-        <Route path="*" element={<h1>404 Not Found</h1>} />
+        {/* Fallback → redirect to landing */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

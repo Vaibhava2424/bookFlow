@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Brand */}
-        <div className="brand" onClick={() => handleLinkClick("/")}>
+        <div className="brand" onClick={() => handleLinkClick("/home")}>
           Book<span className="highlight">Flow</span>
         </div>
 
@@ -42,10 +42,16 @@ const Navbar: React.FC = () => {
         {/* Desktop Links */}
         <div className="links">
           <button
-            className={`link-button ${isActive("/") ? "active" : ""}`}
-            onClick={() => handleLinkClick("/")}
+            className={`link-button ${isActive("/home") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/home")}
           >
             Home
+          </button>
+          <button
+            className={`link-button ${isActive("/BooksPage") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/BooksPage")}
+          >
+            Books
           </button>
           <button
             className={`link-button ${isActive("/about") ? "active" : ""}`}
@@ -69,10 +75,16 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu (Slide-in small panel) */}
         <div className={`links-mobile ${menuOpen ? "open" : ""}`}>
           <button
-            className={`link-button ${isActive("/") ? "active" : ""}`}
-            onClick={() => handleLinkClick("/")}
+            className={`link-button ${isActive("/home") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/home")}
           >
             Home
+          </button>
+          <button
+            className={`link-button ${isActive("/BooksPage") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/BooksPage")}
+          >
+            Books
           </button>
           <button
             className={`link-button ${isActive("/about") ? "active" : ""}`}

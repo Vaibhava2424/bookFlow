@@ -164,7 +164,15 @@
   width:80%;
   transform: rotateY(180deg);
 }
-
+.loading{
+    display: flex;
+    color: #9B30FF;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    height: 100vh;   /* Full viewport height */
+    width: 100vw;    /* Full viewport width */
+}
 .book-cover {
   width: 100%;
   height: auto;
