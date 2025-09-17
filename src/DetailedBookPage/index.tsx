@@ -31,7 +31,9 @@ const BookDetailsPage: React.FC = () => {
         return;
       }
       try {
-        const response = await axios.get<IBook>(`https://bookflow-apis.onrender.com/api/books/${id}`);
+        const response = await axios.get<IBook>(
+          `https://bookflow-apis.onrender.com/api/books/${id}`
+        );
         setBook(response.data);
       } catch (err) {
         setError("Failed to fetch book details. Please check the ID.");
@@ -43,36 +45,46 @@ const BookDetailsPage: React.FC = () => {
     fetchBook();
   }, [id]);
 
+  // --- Loading State ---
   if (isLoading) {
     return (
-      <div className="book-details-page loading">
+      <>
         <Header />
-        <div className="loading-message">Loading book details...</div>
+        <div className="loading-container">
+          <p>Loading book details...</p>
+        </div>
         <Footer />
-      </div>
+      </>
     );
   }
 
+  // --- Error State ---
   if (error) {
     return (
-      <div className="book-details-page error">
+      <>
         <Header />
-        <div className="error-message">{error}</div>
+        <div className="loading-container">
+          <p className="error-message">{error}</p>
+        </div>
         <Footer />
-      </div>
+      </>
     );
   }
 
+  // --- Not Found State ---
   if (!book) {
     return (
-      <div className="book-details-page not-found">
+      <>
         <Header />
-        <div className="not-found-message">Book not found.</div>
+        <div className="loading-container">
+          <p className="not-found-message">Book not found.</p>
+        </div>
         <Footer />
-      </div>
+      </>
     );
   }
 
+  // --- Main Details Page ---
   return (
     <>
       <Header />
@@ -80,11 +92,12 @@ const BookDetailsPage: React.FC = () => {
         <div className="details-container">
           {/* Left side: Book Cover Image */}
           <div className="image-column">
-            <img src={book.image} alt={book.title} className="book-cover-image" />
-            <button 
-              onClick={() => navigate(-1)} 
-              className="back-button"
-            >
+            <img
+              src={book.image}
+              alt={book.title}
+              className="book-cover-image"
+            />
+            <button onClick={() => navigate(-1)} className="back-button">
               Back to Books
             </button>
           </div>
@@ -92,10 +105,19 @@ const BookDetailsPage: React.FC = () => {
           {/* Right side: Detailed Information */}
           <div className="details-column">
             <h1 className="book-title">{book.title}</h1>
-            <p className="book-detail"><strong>Author:</strong> {book.author}</p>
-            <p className="book-detail"><strong>Genre:</strong> {book.genre}</p>
-            <p className="book-detail"><strong>Published Date:</strong> {new Date(book.publishedDate).toLocaleDateString()}</p>
-            <p className="book-detail"><strong>Description:</strong> {book.description}</p>
+            <p className="book-detail">
+              <strong>Author:</strong> {book.author}
+            </p>
+            <p className="book-detail">
+              <strong>Genre:</strong> {book.genre}
+            </p>
+            <p className="book-detail">
+              <strong>Published Date:</strong>{" "}
+              {new Date(book.publishedDate).toLocaleDateString()}
+            </p>
+            <p className="book-detail">
+              <strong>Description:</strong> {book.description}
+            </p>
           </div>
         </div>
       </div>
