@@ -220,4 +220,15 @@
     text-align: center;
     margin-right: 0;
   }
+  .hero-section{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+  }
+  .home-cta{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
 }

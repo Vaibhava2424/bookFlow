@@ -102,7 +102,9 @@ const Home: React.FC = () => {
         <div className='hero-section'>
           <h1 className='home-title'>Welcome to BookFlow</h1>
           <p className='home-description'>The <span className='journey-highlight'>JOURNEY</span> of a thousand miles begins with a <span className='journey-highlight'>SINGLE PAGE</span></p>
-          <button className='home-button' onClick={handleExplore}>Explore Books Now</button>
+          <div className='home-cta'>
+            <button className='home-button' onClick={handleExplore}>Explore Books Now</button>
+          </div>
         </div>
         <div className='hero-image-container'>
           <img src="https://res.cloudinary.com/dodfv5sbg/image/upload/v1757396415/freepik__background__4850_o9hcel.png" className="home-image" alt="Books illustration" />
