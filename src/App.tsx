@@ -11,6 +11,7 @@ import Signup from "./SignupPage";
 import Signin from "./SigninPage";
 import ProtectedRoute from "./ProtectedRoute";
 import ScrollToTop from "../ScrollTop";
+import Feedback from "./FeedbackPage/index.tsx";
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +30,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/feedback"
+          element={
+            <ProtectedRoute>
+              <Feedback />
             </ProtectedRoute>
           }
         />

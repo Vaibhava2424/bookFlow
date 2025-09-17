@@ -1,21 +1,34 @@
-import React from 'react';
-import './index.css'; // Import the CSS file
+import React from 'react'
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
+import './index.css'
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="footer">
-      <div className="footer-container">
-        <p className="footer-text">
-          &copy; {currentYear} BookFlow. All rights reserved.
-        </p>
+      <div className="footer-content">
+        <h2>Book<span className="highlight">Flow</span></h2>
+
         <p className="footer-description">
-          A Prudent Assignment project for efficient book management.
+          Dive into a world of stories! Discover, explore, and manage your favorite books all in one place with BookFlow.
         </p>
+
+        <div className="social-icons">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+          <a href="https://www.linkedin.com/in/vaibhava-raju-nadakuditi" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+          <a href="https://www.instagram.com/vaibhava.raj" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+        </div>
+
+        <div className="footer-links">
+          <a href="/about">About Us</a>
+          <a href="/contact">Contact</a>
+          <a href="/privacy">Privacy Policy</a>
+        </div>
+
+        <p className="footer-copy">© 2025 Jobby. All rights reserved.</p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

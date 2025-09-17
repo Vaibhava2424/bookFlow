@@ -59,6 +59,12 @@ const Navbar: React.FC = () => {
           >
             About
           </button>
+          <button
+            className={`link-button ${isActive("/feedback") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/feedback")}
+          >
+            Feedback
+          </button>
           {location.pathname !== "/add-book" && (
             <button
               className={`add-button ${isActive("/add-book") ? "active" : ""}`}
@@ -91,6 +97,12 @@ const Navbar: React.FC = () => {
             onClick={() => handleLinkClick("/about")}
           >
             About
+          </button>
+          <button
+            className={`link-button ${isActive("/feedback") ? "active" : ""}`}
+            onClick={() => handleLinkClick("/feedback")}
+          >
+            Feedback
           </button>
           {location.pathname !== "/add-book" && (
             <button
