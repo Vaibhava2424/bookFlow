@@ -18,9 +18,11 @@ interface IBook {
   author: string;
   genre: string;
   description?: string;
-  image?: string;
-  [key: string]: any;
+  image?: string; // optional because API might not provide it
+  [key: string]: unknown;
 }
+
+const DEFAULT_BOOK_IMAGE = '/default-book.png'; // put a default image in public folder
 
 const BooksPage: React.FC = () => {
   const [booksList, setBooksList] = useState<IBook[]>([]);
@@ -171,7 +173,12 @@ const BooksPage: React.FC = () => {
             {isLoading
               ? Array.from({ length: 8 }).map((_, idx) => <BookCardSkeleton key={idx} />)
               : currentBooks.length > 0
-              ? currentBooks.map(book => <BookCard key={book._id} book={book} />)
+              ? currentBooks.map(book => (
+                  <BookCard
+                    key={book._id}
+                    book={{ ...book, image: book.image || DEFAULT_BOOK_IMAGE }}
+                  />
+                ))
               : <div className="no-books-found">No books found.</div>
             }
           </ul>
@@ -205,7 +212,11 @@ const BooksPage: React.FC = () => {
               <h2 className="user-books-title">User Added Books</h2>
               <ul className="books-list">
                 {userBooksList.map(book => (
-                  <BookCard key={book._id} book={book} linkPrefix="/user-books" />
+                  <BookCard
+                    key={book._id}
+                    book={{ ...book, image: book.image || DEFAULT_BOOK_IMAGE }}
+                    linkPrefix="/user-books"
+                  />
                 ))}
               </ul>
             </div>
