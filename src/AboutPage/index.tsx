@@ -15,7 +15,7 @@ const About: React.FC = () => {
           </p>
 
           <section className="about-section">
-            <h2 className="section-title">Our Mission</h2>
+            <h2 className="section-title">My Mission</h2>
             <p className="section-text">
               BookFlow is a MERN stack application designed to simplify the management of book records. Our mission is to provide an intuitive and efficient platform for users to search, view, and organize their favorite books. Whether you're a casual reader or a dedicated librarian, BookFlow helps you keep your literary world in order.
             </p>

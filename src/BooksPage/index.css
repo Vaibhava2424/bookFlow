@@ -91,11 +91,12 @@
 
 .books-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* three columns */
   gap: 1.5rem;
   list-style: none;
   padding: 0;
 }
+
 
 .book-link {
   text-decoration: none;
