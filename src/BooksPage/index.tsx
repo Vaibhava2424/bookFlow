@@ -12,6 +12,16 @@ interface IUser {
   email?: string;
 }
 
+interface IBook {
+  _id: string;
+  title: string;
+  author: string;
+  genre: string;
+  description?: string;
+  image?: string;
+  [key: string]: any;
+}
+
 const BooksPage: React.FC = () => {
   const [booksList, setBooksList] = useState<IBook[]>([]);
   const [userBooksList, setUserBooksList] = useState<IBook[]>([]);
@@ -159,7 +169,7 @@ const BooksPage: React.FC = () => {
 
           <ul className="books-list">
             {isLoading
-              ? Array.from({ length: 6 }).map((_, idx) => <BookCardSkeleton key={idx} />)
+              ? Array.from({ length: 8 }).map((_, idx) => <BookCardSkeleton key={idx} />)
               : currentBooks.length > 0
               ? currentBooks.map(book => <BookCard key={book._id} book={book} />)
               : <div className="no-books-found">No books found.</div>
